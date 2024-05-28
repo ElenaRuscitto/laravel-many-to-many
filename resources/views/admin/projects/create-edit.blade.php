@@ -67,6 +67,17 @@
                     </select>
             </div>
 
+
+
+            <div class="btn-toolbar" role="toolbar">
+                <label for="type" class="form-label">Tecnologia/e: </label>
+                <div class="btn-group me-2" role="group">
+                    <input type="checkbox" class="btn-check btn-success" id="btncheck1" autocomplete="off">
+                    <label class="btn btn-outline-primary " for="btncheck1">Checkbox 1</label>
+                </div>
+            </div>
+
+
             <div class="mb-3">
                 <label for="link" class="form-label">Link</label>
                 <input

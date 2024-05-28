@@ -90,6 +90,17 @@
 
 
                                     <td class=" align-content-center ">
+                                        @forelse ($project->technologies as $technology)
+                                            <span class="badge text-bg-success">{{$technology->name}}</span>
+                                        @empty
+                                            - no technology -
+                                        @endforelse
+
+
+                                    </td>
+
+
+                                    <td class=" align-content-center ">
                                         <input
                                             type="text"
                                             class="form-control w-100 p-0"

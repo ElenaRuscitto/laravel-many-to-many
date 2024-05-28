@@ -19,11 +19,12 @@
                       <p class="card-text">Link: {{$project->link}}</p>
                       <p class="card-text text-capitalize">Tipo: {{$project->type->name}}</p>
 
+                      @if(count($project->technologies) > 0)
+                            <p class="card-text">Tecnologia/e: @foreach ($project->technologies as $technology)
+                                <span class="badge text-bg-success">{{$technology->name}}</span>
+                            @endforeach</p>
+                      @endif
 
-                    {{-- stampo il tipo solo se c'è - non funziona--}}
-                      {{-- @if ($project->type_id)
-                        <p class="card-text">Tipo: {{$project->type->name}}</p>
-                      @endif --}}
 
                       <p class="card-text">Descrizione: {{$project->description}}</p>
 
@@ -51,7 +52,7 @@
                 </form>
 
 
-                <a href="{{route('admin.projects.index')}}" class="btn btn-success mx-2">Torna ai Progetti</a>
+                <a href="{{route('admin.projects.index')}}" class="btn btn-primary mx-2">Torna ai Progetti</a>
 
             </div>
 

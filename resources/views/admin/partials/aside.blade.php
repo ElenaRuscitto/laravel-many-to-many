@@ -39,6 +39,15 @@
                             </a>
                           </li>
                     </ul>
+
+                    <ul>
+                        <li>
+                            <a href="{{ route('admin.type_project') }}" class="my-a">
+                                <i class="fa-solid fa-list"></i>
+                              Elenco Progetti/Tecnonogie
+                            </a>
+                          </li>
+                    </ul>
                 </nav>
             </div>
 
