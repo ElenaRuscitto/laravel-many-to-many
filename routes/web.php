@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Models\Technology;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,8 +39,9 @@ Route::middleware(['auth', 'verified'])
             Route::resource('projects', ProjectController::class);
             Route::resource('technologies', TechnologyController::class)->except(['show', 'create', 'edit']);
 
+            // rotte custom
             Route::resource('types', TypeController::class)->except(['index', 'show', 'create', 'edit']);
-
+            Route::get('technology-projects/{technology}', [TechnologyController::class, 'technologyProjects'] )->name('technology-projects');
             Route::get('type-project', [TypeController::class, 'typeProjects'])->name('type_project');
          });
 

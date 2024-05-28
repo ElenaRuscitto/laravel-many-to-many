@@ -40,14 +40,14 @@
                           </li>
                     </ul>
 
-                    <ul>
+                    {{-- <ul>
                         <li>
-                            <a href="{{ route('admin.type_project') }}" class="my-a">
+                            <a href="{{route('admin.technology-projects', $technology)}}"  class="my-a">
                                 <i class="fa-solid fa-list"></i>
                               Elenco Progetti/Tecnonogie
                             </a>
                           </li>
-                    </ul>
+                    </ul> --}}
                 </nav>
             </div>
 

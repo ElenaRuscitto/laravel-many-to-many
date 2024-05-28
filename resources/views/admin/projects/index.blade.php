@@ -91,7 +91,7 @@
 
                                     <td class=" align-content-center ">
                                         @forelse ($project->technologies as $technology)
-                                            <span class="badge text-bg-success">{{$technology->name}}</span>
+                                            <span class="badge text-bg-success"><a class="text-white text-decoration-none" href="{{route('admin.technology-projects', $technology)}}">{{$technology->name}}</a></span>
                                         @empty
                                             - no technology -
                                         @endforelse

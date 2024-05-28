@@ -150,11 +150,19 @@ class ProjectController extends Controller
             }
 
             $project->update($form_data);
-            return redirect()->route('admin.projects.index',$project)->with('update', 'Il progetto è stato aggiornato');
 
-        $project->update($form_data);
 
-        return redirect()->route('admin.projects.index',$project);
+        // funzione per MANY TO MANY
+        if(array_key_exists('technologies', $form_data)) {
+            // aggiorno tutte le relazioni eliminando quelle che eventualmente non ci sono
+            $project->technologies()->sync($form_data['technologies']);
+        } else {
+            // se non sono presenti id dentro i technologies elimino tutte le relazioni con tecnologi
+            $project->technologies()->detach();
+        }
+
+
+        return redirect()->route('admin.projects.index',$project)->with('update', 'Il progetto è stato aggiornato');
 
     }
 
