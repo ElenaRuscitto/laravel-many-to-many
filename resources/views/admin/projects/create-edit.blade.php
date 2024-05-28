@@ -68,14 +68,35 @@
             </div>
 
 
+            <div class="mb-3">
+                <label class="form-label me-3">Tecnologia/e:</label>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                    @foreach ($technologies as $technology)
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="technology_{{$technology->id}}"
+                      value="{{$technology->id}}"
+                      autocomplete="off"
+                      name="technologies[]"
 
-            <div class="btn-toolbar" role="toolbar">
-                <label for="type" class="form-label">Tecnologia/e: </label>
-                <div class="btn-group me-2" role="group">
-                    <input type="checkbox" class="btn-check btn-success" id="btncheck1" autocomplete="off">
-                    <label class="btn btn-outline-primary " for="btncheck1">Checkbox 1</label>
-                </div>
+                      @if ($errors->any() && in_array($technology->id, old('technologies',[]))
+                      || !$errors->any() && $project?->technologies->contains($technology))
+                      checked
+                      @endif
+                      >
+
+                    <label
+                        class="btn btn-outline-success"
+                        for="technology_{{$technology->id}}">{{$technology->name}}</label>
+
+
+                @endforeach
             </div>
+
+
+
+
 
 
             <div class="mb-3">

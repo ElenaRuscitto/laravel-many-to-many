@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use App\Functions\Helper as Help;
 use Illuminate\Support\Facades\Storage;
@@ -40,8 +41,10 @@ class ProjectController extends Controller
         $button='Salva';
         $method= 'POST';
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.create-edit', compact('title','route','project', 'button','method','types'));
+
+        return view('admin.projects.create-edit', compact('title','route','project', 'button','method','types', 'technologies'));
 
     }
 
@@ -80,6 +83,10 @@ class ProjectController extends Controller
 
                 $new_project->save();
 
+                if(array_key_exists('technologies', $form_data)) {
+                    $new_project->technologies()->attach($form_data['technologies']);
+                }
+
                 return redirect()->route('admin.projects.index')->with('success', 'Progetto aggiunto correttamente!');
 
             }
@@ -112,7 +119,8 @@ class ProjectController extends Controller
         $button='Salva' ;
         $method= 'PUT';
         $types = Type::all();
-        return view('admin.projects.create-edit', compact('title','route','project', 'button','method','types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create-edit', compact('title','route','project', 'button','method','types', 'technologies'));
     }
 
     /**
