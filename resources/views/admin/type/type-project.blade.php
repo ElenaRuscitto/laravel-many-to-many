@@ -12,8 +12,8 @@
 
                         <thead>
                         <tr>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Titolo</th>
+                            <th scope="col">TIPO:</th>
+                            <th scope="col">PROGETTO:</th>
                         </tr>
                         </thead>
                         <tbody>
