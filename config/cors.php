@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('APP_FRONTENT_URL', 'www.miosito.it')],
+    'allowed_origins' => [env('APP_FRONTEND_URL', 'www.miosito.it')],
 
     'allowed_origins_patterns' => [],
 
