@@ -31,6 +31,7 @@ class ProjectController extends Controller
     return response()->json($technologies);
    }
 
+//    per immagine in dettaglio guest
    public function getProjectBySlug($slug) {
     $project = Project::where('slug', $slug)->with('type', 'technologies')->first();
 
@@ -40,7 +41,7 @@ class ProjectController extends Controller
             $project->image=asset('storage/'. $project->image);
         }else {
             $project->image=asset('storage/uploads/no-image.png');
-            $project->original_image='no-image!';
+            $project->original_image='no-image';
         }
 
     } else {
@@ -48,4 +49,18 @@ class ProjectController extends Controller
     }
     return response()->json(compact('project', 'success'));
    }
+
+    //    per aprire lista progetti cliccando su Tipo in guest
+    public function getProjectsByType($slug) {
+        $type = Type::where('slug', $slug)->with('projects')->first();
+
+        return response()->json($type);
+    }
+
+      //    per aprire lista progetti cliccando su Tecnologie in guest
+      public function getProjectsByTechnology($slug) {
+        $technology = Technology::where('slug', $slug)->with('projects')->first();
+
+        return response()->json($technology);
+    }
 }
