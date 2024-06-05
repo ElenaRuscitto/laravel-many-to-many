@@ -31,13 +31,13 @@ class LeadController extends Controller
 
         if($validator->fails()) {
             $success=false;
-            $error=$validator->errors();
+            $errors=$validator->errors();
 
-            return response()->json(compact('success', 'error'));
+            return response()->json(compact('success', 'errors'));
         }
 
         $success=true;
 
-        return response()->json(compact('error'));
+        return response()->json(compact('success'));
     }
 }
